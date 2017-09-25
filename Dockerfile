@@ -5,7 +5,7 @@ MAINTAINER Umberto Rosini, rosini@agid.gov.it
 ARG RELEASE=5.3.0
 
 # untar della distribuzione spid di wso2-is in /opt/wso2-is
-RUN curl https://wso2... > /opt/wso2-is-$RELEASE-spid.tar.gz && \
+RUN curl https://github.com/italia/spid-testenv/archive/0.9-beta.1.tar.gz > /opt/wso2-is-$RELEASE-spid.tar.gz && \
     tar xvzf /opt/wso2-is-$RELEASE-spid.tar.gz -d /opt && \
     mv /opt/wso2-is-$RELEASE-spid.tar.gz /opt/wso2-is && \
     rm -f /opt/wso2-is-$RELEASE-spid.tar.gz && \

@@ -11,8 +11,15 @@ RUN curl https://codeload.github.com/italia/spid-testenv/tar.gz/0.9-beta.1 > /op
     rm -f /opt/wso2-is-spid.tar.gz && \
     chmod +x /opt/wso2-is/bin/wso2server.sh
 
-# Porta esposta https://docs.wso2.com/display/IS530/Default+Ports+of+WSO2+Products
-EXPOSE 9443
+# install node
+RUN curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh && \
+    bash nodesource_setup.sh && \
+    apt-get install nodejs && \
+    apt-get install build-essential
+
+# Porte esposte
+EXPOSE 9443 # WSO2-IS
+EXPOSE 8080 # Backoffice
 
 # Comando di avvio di wso2-is
 CMD ["/opt/wso2-is/bin/wso2server.sh", "start"]

@@ -22,15 +22,15 @@ RUN apt-get install -y curl && \
     apt-get install -y build-essential
 
 # untar wso2-is in /opt/wso2-is
-RUN curl https://codeload.github.com/italia/spid-testenv/tar.gz/0.9-beta.1 > /opt/wso2-is-spid.tar.gz && \
-    tar xvzf /opt/wso2-is-spid.tar.gz -d /opt && \
-    mv /opt/wso2-is-spid.tar.gz /opt/wso2-is && \
-    rm -f /opt/wso2-is-spid.tar.gz && \
-    chmod +x /opt/wso2-is/bin/wso2server.sh
+RUN curl -o /opt/spid-testenv.tar.gz https://codeload.github.com/italia/spid-testenv/tar.gz/0.9-beta.1 && \
+    mkdir /opt/spid-testenv && \
+    tar -zxvf /opt/spid-testenv.tar.gz -C /opt/spid-testenv && \
+    rm -f /opt/spid-testenv.tar.gz && \
+    chmod +x /opt/spid-testenv/spid-idp-is/bin/wso2server.sh
 
 # Ports
 EXPOSE 9443 # WSO2-IS
 EXPOSE 8080 # Backoffice
 
 # wso2-is command
-CMD ["/opt/wso2-is/bin/wso2server.sh", "start"]
+CMD ["/opt/spid-testenv/spid-idp-is/bin/wso2server.sh start", "start"]

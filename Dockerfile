@@ -29,8 +29,10 @@ RUN curl -o /opt/spid-testenv.tar.gz https://codeload.github.com/italia/spid-tes
     chmod +x /opt/spid-testenv/spid-idp-is/bin/wso2server.sh
 
 # Ports
-EXPOSE 9443 # WSO2-IS
-EXPOSE 8080 # Backoffice
+# WSO2-IS
+EXPOSE 9443
+# Backoffice
+EXPOSE 8080
 
 # wso2-is command
 CMD ["/opt/spid-testenv/spid-idp-is/bin/wso2server.sh start", "start"]

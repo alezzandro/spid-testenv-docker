@@ -21,7 +21,7 @@ RUN apt-get install -y curl && \
     apt-get install -y nodejs && \
     apt-get install -y build-essential
 
-# untar wso2-is in /opt/wso2-is
+# untar spid-testenv in /opt/spid-testenv
 RUN curl -o /opt/spid-testenv.tar.gz https://codeload.github.com/italia/spid-testenv/tar.gz/0.9-beta.1 && \
     mkdir /opt/spid-testenv && \
     tar -zxvf /opt/spid-testenv.tar.gz -C /opt/spid-testenv && \
@@ -33,4 +33,4 @@ EXPOSE 9443 # WSO2-IS
 EXPOSE 8080 # Backoffice
 
 # wso2-is command
-CMD ["/opt/spid-testenv/spid-idp-is/bin/wso2server.sh start", "start"]
+CMD ["/opt/spid-testenv/spid-idp-is/bin/wso2server.sh", "start"]
